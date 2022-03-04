@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface{
 
     ArrayList<IconListModel> iconListArray = new ArrayList<>();
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         //MUST after setup your iconList
         setupIconList();
 
-        Icon_RecyclerViewAdapter adapter = new Icon_RecyclerViewAdapter(this, iconListArray);
+        Icon_RecyclerViewAdapter adapter = new Icon_RecyclerViewAdapter( this, this, iconListArray);
         //3.attach to our recycler view
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -40,5 +41,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i<iconNames.length; i++){
             iconListArray.add(new IconListModel(iconNames[i], iconNumbers[i], iconShorts[i],iconImages[i]));
         }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+
+        intent.putExtra("IMAGE", iconListArray.get(position).getIconImage());
+
+        startActivity(intent);
     }
 }

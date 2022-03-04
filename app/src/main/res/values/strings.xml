@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">recyclerview_test1</string>
 
-    <string-array name = "icon_full_name">
+    <string-array name="icon_full_name">
         <item>ac units</item>
         <item>airport shuttle</item>
         <item>All Inclusive</item>

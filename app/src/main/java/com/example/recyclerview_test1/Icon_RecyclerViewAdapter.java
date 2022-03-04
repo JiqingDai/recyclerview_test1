@@ -13,10 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Icon_RecyclerViewAdapter extends RecyclerView.Adapter<Icon_RecyclerViewAdapter.Icon_ViewHolder>{
+    private final RecyclerViewInterface recyclerViewInterface;
+
     Context context;
     ArrayList<IconListModel> iconListArray;
 
-    public Icon_RecyclerViewAdapter(Context context, ArrayList<IconListModel> iconListArray) {
+    public Icon_RecyclerViewAdapter(RecyclerViewInterface recyclerViewInterface, Context context, ArrayList<IconListModel> iconListArray) {
+        this.recyclerViewInterface = recyclerViewInterface;
         this.context = context;
         this.iconListArray = iconListArray;
     }
@@ -29,7 +32,7 @@ public class Icon_RecyclerViewAdapter extends RecyclerView.Adapter<Icon_Recycler
         //This is where you inflate the layout (giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row, parent,false);//inflate function:input layout xml return a view/view group
-        return new Icon_RecyclerViewAdapter.Icon_ViewHolder(view);
+        return new Icon_RecyclerViewAdapter.Icon_ViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -58,13 +61,28 @@ public class Icon_RecyclerViewAdapter extends RecyclerView.Adapter<Icon_Recycler
         ImageView ivIcon;
         TextView tvName,tvShort,tvNumber;
 
-        public Icon_ViewHolder(@NonNull View itemView) {
+        public Icon_ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             ivIcon = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.textView1);
             tvNumber = itemView.findViewById(R.id.textView2);
             tvShort = itemView.findViewById(R.id.textView3);
+
+            //attach an onCLickListener to itemView
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        //grab the position from adapter
+                        int pos = getAdapterPosition();
+                        if (pos != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
+                }
+            });
+
         }
     }
 }
