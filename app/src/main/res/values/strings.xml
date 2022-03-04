@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">recyclerview_test1</string>
+
+    <string-array name = "icon_full_name">
+        <item>ac units</item>
+        <item>airport shuttle</item>
+        <item>All Inclusive</item>
+        <item>Apartment</item>
+        <item>Baby Changing Station</item>
+        <item>Backpack</item>
+        <item>Balcony</item>
+        <item>Bathtub</item>
+        <item>Beach Access</item>
+        <item>Bento</item>
+    </string-array>
+
+    <string-array name="icon_short_name">
+        <item>AU</item>
+        <item>AS</item>
+        <item>AI</item>
+        <item>Ap</item>
+        <item>BCS</item>
+        <item>BP</item>
+        <item>BCY</item>
+        <item>BT</item>
+        <item>BA</item>
+        <item>BEN </item>
+    </string-array>
+
+    <string-array name="icon_number">
+        <item>No.1</item>
+        <item>No.2</item>
+        <item>No.3</item>
+        <item>No.4</item>
+        <item>No.5</item>
+        <item>No.6</item>
+        <item>No.7</item>
+        <item>No.8</item>
+        <item>No.9</item>
+        <item>No.10</item>
+    </string-array>
+
+
+</resources>
